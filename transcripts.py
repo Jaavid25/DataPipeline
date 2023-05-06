@@ -55,7 +55,7 @@ for chapter,i in zip(chapters,range(0,len(chapters))):
     time.sleep(0.5)
     url = chapter.find_element(By.TAG_NAME,"a").get_attribute("href")
     file_id = url.split("/")[-2]
-    a.download(file_id,"lec" + str(i) + ".pdf")
+    a.download(file_id,"./transcripts/" + "lec" + str(i) + ".pdf")
     transcript_links.append( chapter.find_element(By.TAG_NAME,"a").get_attribute("href") )
 
 print(transcript_links)

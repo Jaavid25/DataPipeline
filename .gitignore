@@ -1,1 +1,4 @@
-*.pdf
+lecture_videos/
+transcripts/
+__pycache__/
+token.pickle
