@@ -1,5 +1,6 @@
 lecture_audios/
 transcripts/
+converted_audios_wav/
 __pycache__/
 venv/
 **.wav
