@@ -5,9 +5,9 @@ lectures on NPTEL, to train speech recognition models.
 # Requirements:
    Before you can use this project, you'll need to have the following software installed:  
    
-   -> Ubuntu 22.04 (or) MacOS 12  
-   -> Might work on Windows (not tested)  
-   -> Python 3.8
+   * Ubuntu 22.04 (or) MacOS 12  
+   * Might work on Windows (not tested)  
+   * Python 3.8
       
 # Setup Instructions:
    1. Clone this repository to your local machine.  
@@ -16,7 +16,7 @@ lectures on NPTEL, to train speech recognition models.
    ``` 
    2. Install the required Python packages using pip.
    ```
-   pip install -r requirements.txt. 
+   pip3 install -r requirements.txt. 
    ```  
    3. Setup a virtual environment by referring to this documentation,
    
@@ -24,22 +24,23 @@ lectures on NPTEL, to train speech recognition models.
    
    4. Please ensure to have a good internet connection as the downloads may consume large bandwidth.  
    
-# To run the scripts:
+# Usage Instructions:  
+
    ### 1. Downloading the lecture audios:  
    To download all the lecture audios from an NPTEL course webpage, run the **download_audio.py** with the following command,  
    ```
    python3 download_audio.py
    ```  
-   Provide the url for an NPTEL cource page and the destination directory as an user input.  
-   This python script will get links of all lectures and using **yt-dlp** tool to download all the lectures as audios in mp3 format in the specified        destination directory.
+   * Provide the url for an NPTEL cource page and the destination directory as an user input.  
+   * This python script will get links of all lectures and downloads all the lectures as audios in mp3 format in the specified destination directory.
    
    ### 2. Downloading the transcript pdfs:  
    To download all the transcripts from the NPTEL course webpage, run the **download_transcripts.py** with the following command,
    ```
    python3 download_transcripts.py
    ```
-   Provide the url for an NPTEL cource page and the destination directory as an user input.
-   This python script will download all the transcripts as pdfs in the specified destination.
+   * Provide the url for an NPTEL cource page and the destination directory as an user input.
+   * This python script will download all the transcripts as pdfs in the specified destination.
    
    ### 3. Pre-processing audio files:  
    Run the ***bash** script ***convert_audio.sh*** with the following commands,
@@ -47,19 +48,86 @@ lectures on NPTEL, to train speech recognition models.
    sudo chmod 755 convert_audio.sh
    ./convert_audio.sh
    ```  
-   This bash script converts all the downloaded audios from mp3 to WAV format using ***ffmpeg library*** with a
-   16KHz sampling rate, mono channel format. It parallelize the code across N CPUs, where
-   N , path to the directory containing all audio files and Path to an output directory to store the converted files are user inputs.  
+   This bash script converts all the downloaded audios from `.mp3` to `.wav` format with a
+   16KHz sampling rate, mono channel format. It parallelize the code across 'N' CPUs, where
+   * 'N'  
+   * path to the directory containing all audio files. 
+   * Path to an output directory to store the converted files  
+   are user inputs.  
      
    Then, run the python script ***preprocess_audio.py*** by running the following command,
    ```
    python3 preprocess_audio.py
    ```
    This script will trim the first 10 and last 30 seconds from the audio files.  
-   Provide the directory where the converted WAV files are stored as input directory and a directory to store the trimmed WAV as output directory as an      user input.
+   Provide, 
+   * the directory where the converted WAV files are stored as input directory and 
+   * a directory to store the trimmed WAV as output directory 
+   as an user input.
    ### 4. Pre-processing transcripts:  
-   * Run the python script with the
+   * Run the python script with the following command,
+   ```
+   python3 preprocess_transcripts.py
+   ```  
+   This script will,
+   * Convert the PDF to raw text format, and save it as a separate `.txt` file.  
+   * Convert all text to lowercase, and remove all punctuations.  
+   * Convert all digits to their spoken form using the num2words library.  
+   * Removes text segments which are unspoken in actual lecture.  
+     
+   For this script provide,  
+   * Directory having the downloaded transcript pdfs,  
+   * Output directory to store the processed `.txt` files,  
+   as user inputs.  
+   
    ### 5. Creating the training manifest file:  
    
-   ### 6. Creating a dashboard:
-# Observations on this process:
+   To create a ***training manifest file***, run the following command,
+   ```
+   python3 generate_manifest.py
+   ```
+   this script will create a JSON lines file where every line is a JSON object consisting of the following
+   key-value pairs,  
+   * audio_filepath: Local path to the audio file.  
+   * duration: length of the audio file, in seconds.
+   * text: Text corresponding to the audio file.  
+     
+   Provide,  
+   * directory where the processed audio is,  
+   * directory where the processed text is,  
+   * filname for manifest file, `train_manifest.jasonl` 
+   as user inputs.
+   
+   ### 6. Creating a dashboard:  
+   To create a ***dashboard***, run the following command,  
+   ```  
+   python3 create_dashboard.py  
+   ```  
+   
+   To this script, provide  
+   * directory where processed audios are,  
+   * directory where processed transcripts are  
+   as user inputs.  
+   
+   This script will create a dashboard which will display the following four statistics at the top of the dashboard:
+   * Total number of hours
+   * Total number of utterances
+   * Vocabulary Size
+   * Alphabet Size  
+   And also displays the,   
+   * complete Alphabet list.  
+   * plot histograms for the duration per file,  
+   * number of words per file,  
+   * number of characters per file.  
+   
+   ***Note :*** An utterance is taken as the segment spoken in one slide of the lecture due to some inconsistency in transcripts by default.  
+   
+# Observations on this process:  
+
+The observations in this process are,  
+  
+* Downloading of audios and transcripts is working well for other courses too. But only the courses with `https://nptel.ac.in/courses/course_id` type of urls but not the older website of NPTEL or archives.  
+* In audio preprocesing, firts 10 seconds and last 30 seconds are removed since they had NPTEL introduction clip and credits (scrolling names) are there. It is removed since they are not necessary for further processing and also a considerable amount of space will be reduced.  
+
+
+
