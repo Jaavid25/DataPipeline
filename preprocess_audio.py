@@ -16,7 +16,7 @@ for filename in os.listdir(input_dir):
 
 
         # open the input file
-        input_file = audiosegment.from_file(input_dir + "/" + file_name)
+        input_file = audiosegment.from_file(input_dir + "/" + filename)
 
         # calculate the duration of the first 10 and last 30 seconds
         first_10_seconds = 10
@@ -32,4 +32,4 @@ for filename in os.listdir(input_dir):
         remaining_file = first_trimmed_file[:-last_30_seconds * 1000] + last_trimmed_file
 
         # export the remaining file
-        remaining_file.export(output_dir + "/" + file_name, format='wav')
+        remaining_file.export(output_dir + "/" + filename, format='wav')
