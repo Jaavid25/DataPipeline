@@ -1,4 +1,4 @@
-lecture_videos/
+lecture_audios/
 transcripts/
 __pycache__/
-token.pickle
+venv/
