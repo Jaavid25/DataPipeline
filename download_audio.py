@@ -43,12 +43,13 @@ for week,i in zip(weeks,range(0,len(weeks))):
     #find all lectures in the week
     lectures = week.find_elements(By.TAG_NAME,"li")
     #iterate over each lecture and download
-    for lecture in lectures:
+    for lecture,j in zip(lectures,range(0,len(lectures)) ):
         lecture.click()
         driver.switch_to.frame("player")
         time.sleep(1)
         a = driver.find_element(By.CLASS_NAME, "ytp-impression-link")
         url = a.get_attribute("href")
-        print(url)
-        download_audio_from_yt_link(url,output_dir_path)
+        print("downloading audio from week" + str(i + 1) + "lec" + str(j + 1) )
+        file_name = "lec" + str(i + 1) + "_" +  str( j + 1) + ".mp3"
+        download_audio_from_yt_link(url,file_name,output_dir_path)
         driver.switch_to.default_content()
