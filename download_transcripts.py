@@ -72,4 +72,4 @@ for chapter,i in zip(chapters,range(0,len(chapters))):
     file_id = url.split("/")[-2]
     #download drive file from link
     print("downloading transcript pdf for lec" + str(i + 1) + "...")
-    a.download(file_id,output_dir_path + "/" + "lec" + str(i + 1) + ".pdf")
+    a.download(file_id,(output_dir_path + "/" + "lec" + "{:03d}" + ".pdf").format(i+1))

@@ -50,6 +50,6 @@ for week,i in zip(weeks,range(0,len(weeks))):
         a = driver.find_element(By.CLASS_NAME, "ytp-impression-link")
         url = a.get_attribute("href")
         print("downloading audio from week" + str(i + 1) + "lec" + str(j + 1) )
-        file_name = "lec" + str(i + 1) + "_" +  str( j + 1) + ".mp3"
+        file_name = ("lec" + "{:03d}" + "_" +  "{:03d}" + ".mp3").format(i+1,j+1)
         download_audio_from_yt_link(url,file_name,output_dir_path)
         driver.switch_to.default_content()
