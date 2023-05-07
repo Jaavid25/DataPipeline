@@ -47,9 +47,18 @@ lectures on NPTEL, to train speech recognition models.
    sudo chmod 755 convert_audio.sh
    ./convert_audio.sh
    ```  
-   to 
+   This bash script converts all the downloaded audios from mp3 to WAV format using ***ffmpeg library*** with a
+   16KHz sampling rate, mono channel format. It parallelize the code across N CPUs, where
+   N , path to the directory containing all audio files and Path to an output directory to store the converted files are user inputs.  
+     
+   Then, run the python script ***preprocess_audio.py*** by running the following command,
+   ```
+   python3 preprocess_audio.py
+   ```
+   This script will trim the first 10 and last 30 seconds from the audio files.  
+   Provide the directory where the converted WAV files are stored as input directory and a directory to store the trimmed WAV as output directory as an      user input.
    ### 4. Pre-processing transcripts:  
-   
+   * Run the python script with the
    ### 5. Creating the training manifest file:  
    
    ### 6. Creating a dashboard:
