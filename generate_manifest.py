@@ -16,6 +16,7 @@ audio_dir = input("Enter the audio directory: ")
 transcript_dir = input("Enter the transcript directory: ")
 manifest_name  = input("Enter the name of the manifest file: ")
 audio_dir_files = os.listdir(audio_dir)
+audio_dir_files.sort()
 audio_files = list()
 durations = list()
 for audio_dir_file in audio_dir_files:
@@ -24,6 +25,7 @@ for audio_dir_file in audio_dir_files:
         durations.append(get_audio_duration(audio_dir + "/" + audio_dir_file))
 
 transcript_dir_files = os.listdir(transcript_dir)
+transcript_dir_files.sort()
 transcripts = list()
 for transcript_dir_file in transcript_dir_files:
     if  transcript_dir_file.endswith('.txt'):
