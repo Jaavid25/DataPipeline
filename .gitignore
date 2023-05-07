@@ -4,5 +4,6 @@ __pycache__/
 venv/
 converted_audios_wav/
 processed_audios_wav/
+processed_transcripts/
 .*
 ! .gitignore
