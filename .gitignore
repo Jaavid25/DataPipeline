@@ -2,9 +2,14 @@ lecture_audios/
 transcripts/
 __pycache__/
 venv/
-converted_audios_wav/
-processed_audios_wav/
-processed_transcripts/
-train_manifest.jsonl
+**.wav
+**.mp3
+**.pdf
+**.txt
+!lec001_001.wav
+!lec001_002.wav
+!lec001_003.wav
+!lec001_004.wav
+!lec001_005.wav
 .*
 ! .gitignore
