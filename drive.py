@@ -31,18 +31,6 @@ class Drive:
             with open("token.pickle", "wb") as token:
                 pickle.dump(self.creds, token)
         self.service = build("drive", "v3", credentials=self.creds)
-        results = (
-            self.service.files()
-            .list(
-                pageSize=100,
-                fields="files(id, name)",
-            )
-            .execute()
-        )
-        items = results.get("files", [])
-
-        print("Here's a list of files: \n")
-        print(*items, sep="\n", end="\n\n")
 
     def download(self, file_id, file_name):
         request = self.service.files().get_media(fileId=file_id)
@@ -66,23 +54,5 @@ class Drive:
             print("Something went wrong.")
             return False
 
-    def upload(self, filepath):
-        name = filepath.split("/")[-1]
-        mimetype = MimeTypes().guess_type(name)[0]
 
-        file_metadata = {"name": name}
-
-        try:
-            media = MediaFileUpload(filepath, mimetype=mimetype)
-
-            file = (
-                self.service.files()
-                .create(body=file_metadata, media_body=media, fields="id")
-                .execute()
-            )
-
-            print("File Uploaded.")
-
-        except:
-            raise UploadError("Can't Upload File.")
 
