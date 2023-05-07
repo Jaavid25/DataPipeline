@@ -2,6 +2,7 @@ from num2words import num2words
 import string
 import re
 import os
+import pdfminer
 from pdfminer.high_level import extract_text
 
 def replace_digits_with_words(text):
