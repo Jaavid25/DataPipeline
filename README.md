@@ -12,6 +12,7 @@ lectures on NPTEL, to train speech recognition models.
 # Setup Instructions:
   ## Note: Visual studio build tools should be installed in Windows. python3-dev need to be installed in Ubuntu, can be installed by executing the following command.
    ``` sudo apt install python3-dev
+   ```
    1. Clone this repository to your local machine.  
    ``` 
    git clone https://github.com/Jaavid25/DataEngineeringPipeline.git
