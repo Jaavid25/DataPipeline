@@ -57,7 +57,6 @@ for week,i in zip(weeks,range(0,len(weeks))):
     print("week"+ str(i + 1))
     #find all lectures in the week
     lectures = week.find_elements(By.TAG_NAME,"li")
-    scroll(scroll_w,43.5,driver)
     #iterate over each lecture and download
     for lecture,j in zip(lectures,range(0,len(lectures)) ):
         lecture.click()
