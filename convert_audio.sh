@@ -33,4 +33,4 @@ for file in "$source_dir"/*.mp3; do
     fi
 done
 
-echo "Conversion complete."
+echo "Conversion of audio files from mp3 to WAV is completed."
