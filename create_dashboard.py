@@ -75,7 +75,7 @@ def transcript_insights(text_directory):
             no_of_words_per_file.append(word_count)
 
             # add the characters to the character set
-            char_set = set(text) - {'\n', '\x0c'}
+            char_set = set(text) - {'\n', '\x0c', '\uf0b6', '\uf061', '\uf071', '\uf02b', '\uf0b4', '\uf073', '–', 'ˆ', '“', '‘'}
             total_char_set = total_char_set.union(char_set)
             char_count = len(char_set)
             no_of_char_per_file.append(char_count)
