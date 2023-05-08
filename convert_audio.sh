@@ -19,6 +19,8 @@ if [ ! -d "$dest_dir" ]; then
     mkdir -p "$dest_dir"
 fi
 
+echo "Converting files..."
+
 # Convert all MP3 files in the source directory to WAV and save them in the destination directory
 for file in "$source_dir"/*.mp3; do
     if [ -f "$file" ]; then
@@ -30,3 +32,5 @@ for file in "$source_dir"/*.mp3; do
         ffmpeg -threads "$N" -i "$file" -ar 16000 "$dest_dir/$filename.wav"
     fi
 done
+
+echo "Conversion complete."
