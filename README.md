@@ -14,9 +14,7 @@ lectures on NPTEL, to train speech recognition models.
    ``` 
    git clone https://github.com/Jaavid25/DataEngineeringPipeline.git
    ```  
-   2. Setup a virtual environment by referring to this documentation,
-   
-      https://docs.python.org/3/library/venv.html
+   2. Setup a virtual environment by referring to this [documentation.](https://docs.python.org/3/library/venv.html)
       
    3. Install the required Python packages using pip.
    ```
