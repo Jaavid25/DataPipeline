@@ -11,8 +11,8 @@ options = webdriver.ChromeOptions()
 # normally, selenium waits for all resources to download
 # we don't need it as the page also populated with the running javascript code.
 options.page_load_strategy = 'none'
-
-options.add_argument('--headless=new')
+# Has issues with Ubuntu
+# options.add_argument('--headless=new')
 # this returns the path web driver downloaded
 chrome_path = ChromeDriverManager().install()
 chrome_service = Service(chrome_path)

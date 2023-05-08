@@ -12,7 +12,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 options = webdriver.ChromeOptions()
 options.page_load_strategy = 'none'
 #run chrome in headless mode
-options.add_argument("--headless=new")
+#Has issues with ubuntu
+# options.add_argument("--headless=new")
 # this returns the path web driver downloaded
 chrome_path = ChromeDriverManager().install()
 chrome_service = Service(chrome_path)
