@@ -5,8 +5,8 @@ lectures on NPTEL, to train speech recognition models.
 # Requirements:
    Before you can use this project, you'll need to have the following software installed:  
    
-   * MacOS 12 
-   * Might work on Ubuntu  
+   * MacOS 12 - ***The main branch of this repository is for MacOS which runs on headless mode***
+   * Ubuntu - ***The other branch of this repository is for Ubuntu which runs on head mode***
    * Might work on Windows (not tested)  
    * Python 3.8
       
@@ -26,8 +26,18 @@ lectures on NPTEL, to train speech recognition models.
    ```
    pip3 install -r requirements.txt 
    ``` 
+     
+   4. Install ***ffmpeg*** with the following command,  
+   ```
+   sudo apt install ffmpeg  
+   ```  
+   or download from the [official page.](https://www.ffmpeg.org/download.html#build-mac)  
    
-   4. Please ensure to have a good internet connection as the downloads may consume large bandwidth.  
+   6. Install ***yt-dlp*** with the following command, 
+   ```
+   pip3 install yt-dlp  
+   ```
+   7. Please ensure to have a good internet connection as the downloads may consume large bandwidth.  
    
 # Usage Instructions:  
 
