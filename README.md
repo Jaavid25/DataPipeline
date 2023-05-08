@@ -10,7 +10,7 @@ lectures on NPTEL, to train speech recognition models.
    * Python 3.8
       
 # Setup Instructions:
-  ## Note: Visual studio build tools should be installed in Windows. python3-dev need to be installed in Ubuntu, can be installed by executing the following command.
+  ## Note: python3-dev need to be installed in Ubuntu, can be installed by executing the following command.
    ```
    sudo apt install python3-dev
    
