@@ -7,12 +7,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-def scroll(window,distance,driver):
-    scroll = 0
-    driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[1];',
-                                window,distance)
-    # add appropriate wait here, of course. 1-2 seconds each
-    time.sleep(2)
 
 # start by defining the options
 options = webdriver.ChromeOptions()
@@ -73,7 +67,6 @@ for week,i in zip(weeks,range(0,len(weeks))):
         url = a.get_attribute("href")
         print("downloading audio from week" + str(i + 1) + "lec" + str(j + 1) )
         file_name = ("lec" + "{:03d}" + "_" +  "{:03d}" + ".mp3").format(i+1,j+1)
-        scroll(scroll_w, 69,driver)
         download_audio_from_yt_link(url,file_name,output_dir_path)
         driver.switch_to.default_content()
         

@@ -6,6 +6,14 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from drive import Drive
 import os
+
+def scroll(window,distance,driver):
+    scroll = 0
+    driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[1];',
+                                window,distance)
+    # add appropriate wait here, of course. 1-2 seconds each
+    time.sleep(2)
+
 # start by defining the options
 options = webdriver.ChromeOptions()
 # normally, selenium waits for all resources to download
@@ -62,6 +70,7 @@ chapters = transcript_menu.find_elements(By.CLASS_NAME,"d-data")
 # drive object to download transcript
 a = Drive()
 print("downloading transcripts, this may take several minutes depending on your internet connection, please wait patiently...")
+scroll(scroll_w, 43.5,driver)
 #iterate over each chapter, click select language and select english and find the link
 for chapter,i in zip(chapters,range(0,len(chapters))):
     chapter.find_element(By.CLASS_NAME,"c-language").click()
@@ -70,6 +79,7 @@ for chapter,i in zip(chapters,range(0,len(chapters))):
     time.sleep(0.5)
     url = chapter.find_element(By.TAG_NAME,"a").get_attribute("href")
     file_id = url.split("/")[-2]
+    scroll(scroll_w, 69,driver)
     #download drive file from link
     print("downloading transcript pdf for lec" + str(i + 1) + "...")
     a.download(file_id,(output_dir_path + "/" + "lec" + "{:03d}" + ".pdf").format(i+1))
