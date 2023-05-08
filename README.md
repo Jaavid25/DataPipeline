@@ -5,12 +5,14 @@ lectures on NPTEL, to train speech recognition models.
 # Requirements:
    Before you can use this project, you'll need to have the following software installed:  
    
-   * Ubuntu 22.04 (or) MacOS 12  
-   * Might work on Windows (not tested)  
-   * Python 3.8
+ * MacOS 12 - The main branch of this repository is for MacOS which runs on headless mode
+ * Ubuntu - The other branch of this repository is for Ubuntu which runs on head mode
+ * Might work on Windows (not tested)
+ * Python 3.8
       
 # Setup Instructions:
-  ## Note: python3-dev need to be installed in Ubuntu, can be installed by executing the following command.
+  ## Unlike MacOS, here in Ubuntu headless mode is not used, it is on head mode. 
+  ### Note: python3-dev need to be installed in Ubuntu, can be installed by executing the following command.
    ```
    sudo apt install python3-dev
    
@@ -133,7 +135,7 @@ The observations in this process are,
 * Downloading of audios and transcripts is working well for other courses too. But only the courses with `https://nptel.ac.in/courses/course_id` type of urls but not the older website of NPTEL or archives.  
 * In audio preprocesing, firts 10 seconds and last 30 seconds are removed since they had NPTEL introduction clip and credits (scrolling names) are there. It is removed since they are not necessary for further processing and also a considerable amount of space will be reduced.  
 * In text preprocessing, there were text segments which are not actully spoken out. Like, The header section of the transcripts which has course title, faculty name, department, institution, lecture and topic. And also in many places time reference for the corresponding slides are given. Such text segments are removed.  
-* while downloading transcripts, used selenium in head mode at first. But, at one place I had to scroll down and click to select language. But in head mode, could not acces the content below the screen visibility. Then tried ***headless*** mode to scroll down and click but it didn't work. Then notced that chrome has released new version ***headless==new*** which gives the entire content of the page.  
+* while downloading transcripts, used selenium in head mode at first. But, at one place I had to scroll down and click to select language. But in head mode, could not acces the content below the screen visibility. Then tried ***headless*** mode to scroll down and click but it didn't work. Then notced that chrome has released new version ***headless==new*** which gives the entire content of the page. But in Ubuntu head mode is used sinced it encounterd some problems in headless mode.  
 * In transcripts, noticed that there are many random newline characters (\n) and (\n\n). Hence, found difficult to split proper utterances. So, replaced the time reference of slide in video segments are replaced by (\n\n\n) to differentiate and split the utterances.
 * In the webpage, non-uniform class names and more client-side rendering made it a bit challenging task to scrape them.
 
