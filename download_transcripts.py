@@ -63,6 +63,7 @@ for download_menu in download_menus:
         transcript_menu = download_menu
         break
 
+scroll_w = transcript_menu.find_element(By.CLASS_NAME,"data")
 #click transcript menu
 transcript_menu.click()
 # find chapters  inside transcript menu
