@@ -100,7 +100,7 @@ lectures on NPTEL, to train speech recognition models.
    ### 6. Creating a dashboard:  
    To create a ***dashboard***, run the following command,  
    ```  
-   python3 create_dashboard.py  
+   streamlit run create_dashboard.py  
    ```  
    
    To this script, provide  
