@@ -5,7 +5,8 @@ lectures on NPTEL, to train speech recognition models.
 # Requirements:
    Before you can use this project, you'll need to have the following software installed:  
    
-   * Ubuntu 22.04 (or) MacOS 12  
+   * MacOS 12 
+   * Might work on Ubuntu  
    * Might work on Windows (not tested)  
    * Python 3.8
       
