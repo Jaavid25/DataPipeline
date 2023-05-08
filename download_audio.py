@@ -20,9 +20,23 @@ chrome_service = Service(chrome_path)
 driver = Chrome(options=options, service=chrome_service)
 driver.implicitly_wait(5)
 
-url = input("course URL: ")
+url = input("course URL: ")  
 output_dir_path = input("output directory path :")
 
+#check strings
+check1 = 'https://nptel.ac.in/courses/'                        
+check2 = 'nptel.ac.in/courses/'
+check3 = 'http://nptel.ac.in/courses/'
+
+#check and ensure that the entered URL is a proper NPTEL course page.
+while True: 
+  if check1 not in url and check2 not in url and check3 not in url:
+    print("Invalid URL..\n")
+    print("Enter a correct NPTEL URL in the form of 'https://nptel.ac.in/courses/course_id'\n")
+    url = input("course URL: ") 
+  else:
+    break
+    
 #check if there's a directory else create one
 if not os.path.exists(output_dir_path):
     os.makedirs(output_dir_path)
