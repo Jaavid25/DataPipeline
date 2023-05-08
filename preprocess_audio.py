@@ -9,6 +9,7 @@ output_dir = input("output directory  :")
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
+print("Trimming first 10 and last 30 seconds of the audio files...")
 
 # iterate through all .wav files in the input directory
 for filename in os.listdir(input_dir):
@@ -33,3 +34,5 @@ for filename in os.listdir(input_dir):
 
         # export the remaining file
         remaining_file.export(output_dir + "/" + filename, format='wav')
+        
+print("Trimming of audio files completed.")
